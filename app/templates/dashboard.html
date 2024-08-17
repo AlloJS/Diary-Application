@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - My Application{% endblock %}
+
+{% block content %}
+<div class="containet text-center"><h1>DASHBOARD</h1></div>
+
+<div>
+    {% if list_events %}
+        {% for events in list_events %}
+           <div class="container text-center">
+               <div class="m-3">
+                   <h3>{{ events.name }}</h3><br>
+                   <em>{{ events.description }}</em><br>
+               </div>
+                <div class="m-3">
+                    <strong>Start Date:</strong> {{ events.date_start }}<br>
+                    <strong>End Date:</strong> {{ events.date_and }}<br>
+                </div>
+                <div class="m-3">
+                    <h3>Calendar:</h3><br>
+                    <pre>{{ events.calendar }}</pre>
+                </div>
+               <hr>
+           </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock content %}
+
