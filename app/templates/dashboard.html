@@ -3,14 +3,40 @@
 {% block title %}Dashboard - My Application{% endblock %}
 
 {% block content %}
-<div class="containet text-center"><h1>DASHBOARD</h1></div>
+<div class="containet text-center">
+    <h1>DASHBOARD</h1>
+    <h3>{{ name_diary}}</h3>
+    <p>Id diario: {{id_diary}}</p>
+    <div class="container">
+        <form method="get">
+            <h4>Cerca evento:</h4>
+            <input name="id_diary" type="hidden" value="{{id_diary}}" >
+            <input name="search-event" type="text" class="form-control" placeholder="Nome evento..." aria-label="CodiceDiario" aria-describedby="basic-addon1">
+            <div class="mt-4">
+                <button type="submit" class="btn btn-outline-success">Cerca / Ricarica</button>
+                <a href="aggiungiEvento?id_diary={{id_diary}}" class="btn btn-outline-warning">Aggiungi evento </a>
 
-<div>
-    {% if list_events %}
-        {% for events in list_events %}
-           <div class="container text-center">
+            </div>
+        </form>
+
+    </div>
+</div>
+{% if message != "" %}
+<h4 class="text-danger text-center mt-3">{{ message }}</h4>
+{% endif %}
+{% if list_events %}
+    {% for events in list_events %}
+    <div class="accordion accordion-flush container" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ events.univoc_id }}" aria-expanded="false" aria-controls="flush-collapseOne">
+              <strong>{{ events.name }}</strong> &nbsp; Del: {{ events.date_start }}
+          </button>
+        </h2>
+        <div id="flush-collapseOne{{ events.univoc_id }}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample{{ events.name }}">
+          <div class="accordion-body">
+              <div class="container text-center">
                <div class="m-3">
-                   <h3>{{ events.name }}</h3><br>
                    <em>{{ events.description }}</em><br>
                </div>
                 <div class="m-3">
@@ -23,8 +49,11 @@
                 </div>
                <hr>
            </div>
-        {% endfor %}
-    {% endif %}
-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+ {% endfor %}
+{% endif %}
 {% endblock content %}
 

@@ -26,7 +26,7 @@
         <h5 class="modal-title">Apri il tuo Diario</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form method="post" action="dashboard">
+      <form method="get" action="dashboard">
           <div class="modal-body">
               <p>Digita il codice univoco del tuo diario.</p>
               <input name="id_diary" type="text" class="form-control" placeholder="Codice diario..." aria-label="CodiceDiario" aria-describedby="basic-addon1">
@@ -39,6 +39,5 @@
     </div>
   </div>
 </div>
-
 
 {% endblock %}

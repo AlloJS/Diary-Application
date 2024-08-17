@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - My Application{% endblock %}
+
+{% block content %}
+<div class="containet text-center">
+    <h1>AGGIUNGI EVENTO</h1>
+    <p>Id diario: {{id_diary}}</p>
+    <a  href="dashboard?id_diary={{id_diary}}" class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Torna indietro</a>
+    <div class="container mt-4">
+        <form method="get" class="m-4">
+            <h5>Tipo Evento</h5>
+            <select name="tipe-event"  class="form-control" aria-label="CodiceDiario" aria-describedby="basic-addon1">
+            <option value="0">-Scegli tipo evento-</option>
+            <option value="1">Giornaliero</option>
+            <option value=2">Mensile</option>
+            <option value="3">Periodo</option>
+            </select>
+            <br>
+            <h5>Nome Evento:</h5>
+            <input name="id_diary" type="hidden" value="{{id_diary}}">
+            <input name="name" type="text" class="form-control" placeholder="Nome evento..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+            <br>
+            <h5>Descrizione:</h5>
+            <textarea name="description" class="form-control" placeholder="Descrizione..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required></textarea>
+            <br>
+            <h5>Data inizio:</h5>
+            <input name="date_start" type="date" class="form-control" placeholder="Nome evento..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+            <br>
+            <h5>Data Fine:</h5>
+            <input name="date_and" type="date" class="form-control" placeholder="Nome evento..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-outline-success">Aggiungi Evento</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock content %}
