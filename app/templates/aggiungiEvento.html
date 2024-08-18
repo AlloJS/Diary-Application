@@ -8,32 +8,61 @@
     <p>Id diario: {{id_diary}}</p>
     <a  href="dashboard?id_diary={{id_diary}}" class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Torna indietro</a>
     <div class="container mt-4">
-        <form method="get" class="m-4">
+        <form method="get" class="m-4" name="formAdd" action="writeDB">
             <h5>Tipo Evento</h5>
-            <select name="tipe-event"  class="form-control" aria-label="CodiceDiario" aria-describedby="basic-addon1">
-            <option value="0">-Scegli tipo evento-</option>
+            <select onchange="setTipe(this)" id="type-event" name="type-event"  class="form-control" aria-label="CodiceDiario" aria-describedby="basic-addon1">
             <option value="1">Giornaliero</option>
-            <option value=2">Mensile</option>
+            <option value="2">Mensile</option>
             <option value="3">Periodo</option>
             </select>
             <br>
             <h5>Nome Evento:</h5>
-            <input name="id_diary" type="hidden" value="{{id_diary}}">
-            <input name="name" type="text" class="form-control" placeholder="Nome evento..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+            <input id="id_diary" name="id_diary" type="hidden" value="{{id_diary}}">
+            <input id="name"  name="name" type="text" class="form-control" placeholder="Nome evento..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
             <br>
             <h5>Descrizione:</h5>
-            <textarea name="description" class="form-control" placeholder="Descrizione..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required></textarea>
+            <textarea id="description" name="description" class="form-control" placeholder="Descrizione..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required></textarea>
             <br>
-            <h5>Data inizio:</h5>
-            <input name="date_start" type="date" class="form-control" placeholder="Nome evento..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
-            <br>
-            <h5>Data Fine:</h5>
-            <input name="date_and" type="date" class="form-control" placeholder="Nome evento..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+            <div id ="div-month">
+                <h5>Mese:</h5>
+                 <select  id="choose-month" name="choose-month"  class="form-control" aria-label="CodiceDiario" aria-describedby="basic-addon1">
+                    <option value="1">Gennaio</option>
+                    <option value="2">Febbraio</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Aprile</option>
+                    <option value="5">Maggio</option>
+                    <option value="6">Giugno</option>
+                    <option value="7">Luglio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Settembre</option>
+                    <option value="10">Ottobre</option>
+                    <option value="11">Novembre</option>
+                    <option value="12">Dicembre</option>
+                 </select>
+                <h5>Anno:</h5>
+                <input id="year"  name="year" type="number" min="0" max="23" class="form-control" placeholder="Anno..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+            </div>
+            <div id="div-period">
+                <h5>Data inizio:</h5>
+                <input id="date_start" onchange="setData(this)" name="date_start" type="date" class="form-control" placeholder="Data Inizio..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+                <br>
+                <h5>Ora e minuti inizio:</h5>
+                <input id="hour_start"  name="hour_start" type="number" min="0" max="23" class="form-control" placeholder="Ora inizio..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+                <input id="minute_start"  name="minute_start" type="number" min="0" max="59" class="form-control" placeholder="Minuti inizio..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+                <br>
+                <h5>Data Fine:</h5>
+                <input id="date_and" name="date_and" type="date" class="form-control" placeholder="Data fine..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+                <br>
+                <h5>Ora e minuti fine:</h5>
+                <input id="hour_and"  name="hour_and" type="number" min="0" max="23" class="form-control" placeholder="Ora fine..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+                <input id="minute_and"  name="minute_and" type="number" min="0" max="59" class="form-control" placeholder="Minuti fine..." aria-label="CodiceDiario" aria-describedby="basic-addon1" required>
+            </div>
             <div class="mt-4">
-                <button type="submit" class="btn btn-outline-success">Aggiungi Evento</button>
+                <button id="btn-addEvent" type="button" class="btn btn-outline-success">Aggiungi Evento</button>
             </div>
         </form>
 
     </div>
 </div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock content %}

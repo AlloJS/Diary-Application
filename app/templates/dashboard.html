@@ -10,19 +10,18 @@
     <div class="container">
         <form method="get">
             <h4>Cerca evento:</h4>
-            <input name="id_diary" type="hidden" value="{{id_diary}}" >
+            <input name="id_diary" type="hidden" value="{{id_diary}}">
             <input name="search-event" type="text" class="form-control" placeholder="Nome evento..." aria-label="CodiceDiario" aria-describedby="basic-addon1">
             <div class="mt-4">
                 <button type="submit" class="btn btn-outline-success">Cerca / Ricarica</button>
                 <a href="aggiungiEvento?id_diary={{id_diary}}" class="btn btn-outline-warning">Aggiungi evento </a>
-
             </div>
         </form>
-
     </div>
 </div>
+<br>
 {% if message != "" %}
-<h4 class="text-danger text-center mt-3">{{ message }}</h4>
+<h4 class="text-danger text-center mt-4">{{ message }}</h4>
 {% endif %}
 {% if list_events %}
     {% for events in list_events %}
