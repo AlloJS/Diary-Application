@@ -13,12 +13,12 @@
         <img src="{{ url_for('static', filename='images/logo.png') }}" width="400px">
     </div>
     <div class="d-flex justify-content-center mt-4">
-        <button type="button" class="btn btn-success btn-lg m-2">Nuovo Diario</button>
+        <button type="button" class="btn btn-success btn-lg m-2" data-bs-toggle="modal" data-bs-target="#newdiary">Nuovo Diario</button>
         <button type="button" class="btn btn-warning btn-lg m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Apri il Diario</button>
     </div>
 </div>
 
-<!-- MODAL -->
+<!-- MODAL DIARY EXSIST -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -30,6 +30,29 @@
           <div class="modal-body">
               <p>Digita il codice univoco del tuo diario.</p>
               <input name="id_diary" type="text" class="form-control" placeholder="Codice diario..." aria-label="CodiceDiario" aria-describedby="basic-addon1">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Chiudi</button>
+            <button type="submit" class="btn btn-success">Apri Diario</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL NEW DIARY -->
+<div class="modal fade" id="newdiary" tabindex="-1" aria-labelledby="newdiaryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nuovo Diario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="get" action="dashboard">
+          <div class="modal-body">
+              <p>Digita il nome del nuovo diario.</p>
+              <input name="name_new_diary" type="text" class="form-control" placeholder="Nome diario..." aria-label="CodiceDiario" aria-describedby="basic-addon1">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Chiudi</button>

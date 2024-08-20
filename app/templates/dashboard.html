@@ -29,13 +29,19 @@
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ events.univoc_id }}" aria-expanded="false" aria-controls="flush-collapseOne">
-              <strong>{{ events.name }}</strong> &nbsp; Del: {{ events.date_start }}
+              <strong>{{ events.name }}</strong>&nbsp;Del: {{ events.date_start }}
           </button>
+
         </h2>
-        <div id="flush-collapseOne{{ events.univoc_id }}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample{{ events.name }}">
+        <div id="flush-collapseOne{{ events.univoc_id }}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample{{ events.univoc_id }}">
           <div class="accordion-body">
               <div class="container text-center">
                <div class="m-3">
+                   <div class="m-2">
+                       <a href="delete_event?univoc_id={{events.univoc_id}}&id_diary={{id_diary}}" class="btn btn-danger">Elimina</a>
+                       <a href="modify_event?univoc_id={{events.univoc_id}}&id_diary={{id_diary}}" class="btn btn-warning">Modifica</a>
+                   </div>
+
                    <em>{{ events.description }}</em><br>
                </div>
                 <div class="m-3">
